@@ -1,0 +1,87 @@
+{
+  "_note": "SAMPLE DATA for frontend development. Every number and claim here is a placeholder: replace with real output from the backend and hand-check before the demo.",
+  "vehicle": {
+    "vin": null,
+    "year": 2001,
+    "make": "ACURA",
+    "model": "INTEGRA",
+    "trim": "LS",
+    "mileage": 168000
+  },
+  "mode": "own",
+  "language": "en",
+  "summary": "Your Integra is past due for transmission fluid service. That is the most expensive thing to ignore on this car.",
+  "recalls": [
+    {
+      "campaign": "XXV000000",
+      "component": "AIR BAGS",
+      "summary_plain": "Placeholder recall. Replace with real NHTSA recall text rewritten in plain language.",
+      "risk": "high",
+      "remedy_plain": "Any Acura dealer fixes this for free."
+    }
+  ],
+  "known_problems": [
+    {
+      "component": "POWER TRAIN:AUTOMATIC TRANSMISSION",
+      "complaint_count": 0,
+      "typical_mileage": { "p25": 0, "median": 0, "p75": 0 },
+      "in_range": true,
+      "explanation": "Placeholder. Owners most often report this problem in this mileage range."
+    }
+  ],
+  "maintenance_due": [
+    {
+      "service": "Automatic transmission fluid",
+      "interval_miles": 0,
+      "status": "overdue",
+      "why": "Old fluid stops protecting the clutches inside the transmission.",
+      "verify": true
+    },
+    {
+      "service": "Engine oil and filter",
+      "interval_miles": 0,
+      "status": "due",
+      "why": "Clean oil keeps the engine from wearing out.",
+      "verify": true
+    }
+  ],
+  "declined_services": [
+    {
+      "rank": 1,
+      "service": "Automatic transmission fluid",
+      "risk_if_ignored": "Slipping, harsh shifts, then transmission failure.",
+      "cost_if_ignored_usd": [0, 0],
+      "cost_to_do_now_usd": [0, 0]
+    }
+  ],
+  "diy_cards": [
+    {
+      "job": "Automatic transmission fluid drain and fill",
+      "difficulty": "easy",
+      "time_hours": [0.5, 1],
+      "tools": ["Socket set", "Drain pan", "Funnel"],
+      "parts_cost_usd": [0, 0],
+      "shop_cost_usd": [0, 0],
+      "safety_note": null
+    }
+  ],
+  "pre_purchase": {
+    "inspect": [],
+    "should_be_done": [],
+    "ask_seller": []
+  },
+  "price_check": {
+    "asking_price": null,
+    "comps": 0,
+    "p25": null,
+    "median": null,
+    "p75": null,
+    "verdict": "unknown",
+    "trend": []
+  },
+  "sources": ["NHTSA vPIC", "NHTSA Recalls", "NHTSA Complaints", "Craigslist used cars (Kaggle)"],
+  "disclaimers": [
+    "Costs and difficulty are estimates, not quotes.",
+    "Brakes, airbags, and fuel lines: have a professional check your work."
+  ]
+}

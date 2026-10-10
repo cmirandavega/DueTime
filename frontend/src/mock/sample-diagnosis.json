@@ -1,0 +1,26 @@
+{
+  "_note": "SAMPLE DATA. Placeholder causes and links for building the UI.",
+  "stop_driving": false,
+  "stop_reason": null,
+  "causes": [
+    {
+      "cause": "Placeholder cause: worn part",
+      "how_to_confirm": "Placeholder check you can do at home.",
+      "who": "diy",
+      "nhtsa_component": "POWER TRAIN",
+      "nhtsa_complaints": 0
+    },
+    {
+      "cause": "Placeholder cause: low fluid",
+      "how_to_confirm": "Placeholder check you can do at home.",
+      "who": "either",
+      "nhtsa_component": null,
+      "nhtsa_complaints": null
+    }
+  ],
+  "sources": [
+    { "title": "Example owner forum thread", "url": "https://example.com/forum-thread" },
+    { "title": "Example repair video", "url": "https://example.com/video" }
+  ],
+  "search_suggestions_html": null
+}
