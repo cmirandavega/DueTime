@@ -3,6 +3,7 @@
 Zero Data: no accounts, no cookies, no analytics, no request logging.
 Run uvicorn with --no-access-log so VINs never land in server logs.
 """
+import time
 import asyncio
 from typing import Literal
 
@@ -47,7 +48,11 @@ async def vin_photo(photo: UploadFile = File(...)):
     data = await photo.read()  # kept in memory only, never written anywhere
     if len(data) > 8 * 1024 * 1024:
         raise HTTPException(413, "Photo too large (8 MB max).")
-    found = await llm.read_vin_photo(data, photo.content_type or "image/jpeg")
+    try:
+        found = await llm.read_vin_photo(data, photo.content_type or "image/jpeg")
+    except Exception as e:
+        print(f"VIN photo failed: {type(e).__name__}: {e}")
+        raise HTTPException(422, "Couldn't read that photo. Try a JPG or PNG, closer to the VIN.")
     if not found:
         raise HTTPException(422, "Couldn't read a VIN. Try a closer, sharper photo.")
     return await nhtsa.decode_vin(found)
@@ -69,7 +74,11 @@ async def diagnose(body: DiagnoseIn):
     vehicle = {"year": body.year, "make": make, "model": model, "mileage": body.mileage}
     complaints = await nhtsa.complaints_summary(body.year, make, model)
     components = [c["component"] for c in complaints["by_component"]]
-    result = await llm.diagnose(vehicle, body.symptom.strip(), body.lang, components)
+    try:
+        result = await llm.diagnose(vehicle, body.symptom.strip(), body.lang, components)
+    except Exception as e:
+        print(f"Diagnose failed: {type(e).__name__}: {e}")
+        raise HTTPException(503, "Search is busy right now. Try again in a minute.")
     counts = {c["component"]: c["count"] for c in complaints["by_component"]}
     for cause in result.get("causes", []):
         cause["nhtsa_complaints"] = counts.get(cause.get("nhtsa_component"))

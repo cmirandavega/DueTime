@@ -1,3 +1,5 @@
+import DueChecklist from './DueChecklist.jsx'
+
 const usd = (n) => (n == null ? '—' : `$${Number(n).toLocaleString()}`)
 const range = (r) => (Array.isArray(r) && r.length === 2 ? `${usd(r[0])}–${usd(r[1])}` : '—')
 const miles = (n) => (n == null ? '—' : `${Number(n).toLocaleString()} mi`)
@@ -24,19 +26,7 @@ export default function Report({ report: r, t }) {
         <p className="summary">{r.summary}</p>
       </section>
 
-      {r.declined_services?.length > 0 && (
-        <Card title={t.declined} lead={t.declinedLead} tone="alert">
-          <ol className="list">
-            {r.declined_services.map((d) => (
-              <li key={d.service}>
-                <strong>{d.service}</strong>
-                <p>{d.risk_if_ignored}</p>
-                <p className="costs"><span>{t.ifIgnored}: {range(d.cost_if_ignored_usd)}</span><span>{t.doNow}: {range(d.cost_to_do_now_usd)}</span></p>
-              </li>
-            ))}
-          </ol>
-        </Card>
-      )}
+        {r.declined_services?.length > 0 && <DueChecklist items={r.declined_services} t={t} />}
 
       <Card title={t.recalls}>
         {r.recalls?.length ? (

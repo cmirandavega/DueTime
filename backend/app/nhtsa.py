@@ -49,10 +49,16 @@ async def _get(url: str, kind: str, year: int, make: str, model: str) -> dict:
     if cached is not None:
         return cached
     params = {"make": make, "model": model, "modelYear": year}
-    async with httpx.AsyncClient(timeout=TIMEOUT) as client:
-        r = await client.get(url, params=params)
+    try:
+        async with httpx.AsyncClient(timeout=TIMEOUT) as client:
+            r = await client.get(url, params=params)
+        if r.status_code in (400, 404):
+            return {"results": []}  # NHTSA doesn't know this make/model/year
         r.raise_for_status()
-    return r.json()
+        return r.json()
+    except httpx.HTTPError as e:
+        print(f"NHTSA {kind} failed: {type(e).__name__}: {e}")
+        return {"results": []}
 
 
 async def recalls(year: int, make: str, model: str) -> list[dict]:

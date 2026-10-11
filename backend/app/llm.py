@@ -5,7 +5,7 @@ rest of the team is never blocked.
 import json
 import re
 
-from .config import GEMINI_API_KEY, GEMINI_MODEL
+from .config import GEMINI_API_KEY, GEMINI_MODEL, GEMINI_FALLBACK_MODELS, GROQ_API_KEY, GROQ_MODEL
 
 _client = None
 
@@ -14,9 +14,38 @@ def client():
     global _client
     if _client is None and GEMINI_API_KEY:
         from google import genai
-        _client = genai.Client(api_key=GEMINI_API_KEY)
+        # 25s timeout per try instead of the SDK's long default retries
+        _client = genai.Client(api_key=GEMINI_API_KEY, http_options={"timeout": 25_000})
     return _client
 
+
+async def generate(contents, config):
+    """Try the main model, then each fallback. Busy (503) or rate-limited (429) -> next model."""
+    from google.genai import errors
+    last = None
+    for model in [GEMINI_MODEL, *GEMINI_FALLBACK_MODELS]:
+        try:
+            return await client().aio.models.generate_content(model=model, contents=contents, config=config)
+        except (errors.ServerError, errors.ClientError) as e:
+            print(f"Gemini {model} failed: {getattr(e, 'code', '')} {e}")
+            last = e
+    raise last
+
+async def groq_json(prompt: str) -> dict | None:
+    """Backup when Gemini is down. JSON only, no web search."""
+    if not GROQ_API_KEY:
+        return None
+    import httpx
+    async with httpx.AsyncClient(timeout=30) as http:
+        r = await http.post(
+            "https://api.groq.com/openai/v1/chat/completions",
+            headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+            json={"model": GROQ_MODEL, "temperature": 0.3,
+                  "response_format": {"type": "json_object"},
+                  "messages": [{"role": "user", "content": prompt}]},
+        )
+        r.raise_for_status()
+    return json.loads(r.json()["choices"][0]["message"]["content"])
 
 REPORT_PROMPT = """You are DueTime, a patient mechanic explaining a car to its owner.
 Write for someone who has never worked on a car. Short sentences. No jargon without a one-line explanation.
@@ -85,16 +114,23 @@ async def write_report(vehicle: dict, mode: str, lang: str,
         mode_text="the user is thinking of BUYING this car" if mode == "buy" else "the user OWNS this car",
         facts=_facts(recalls, complaints_api, curves, price),
     )
-    resp = await c.aio.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt,
-        config={"response_mime_type": "application/json", "temperature": 0.3},
-    )
     try:
-        return json.loads(resp.text)
-    except (json.JSONDecodeError, TypeError):
+        response = await generate(
+            prompt,
+            {"response_mime_type": "application/json", "temperature": 0.1},
+        )
+        payload = json.loads(response.text)
+        return payload
+    except Exception as e:
+        print(f"Gemini failed: {type(e).__name__}: {e}")
+        try:
+            backup = await groq_json(prompt)
+            if backup:
+                print("Used Groq backup")
+                return backup
+        except Exception as g:
+            print(f"Groq failed: {type(g).__name__}: {g}")
         return _fallback(recalls, complaints_api, curves)
-
 
 SAFETY_WORDS = (
     "brake", "steering", "airbag", "air bag", "fuel smell", "gas smell", "smell gas", "smell fuel",
@@ -137,13 +173,12 @@ async def diagnose(vehicle: dict, symptom: str, lang: str, components: list[str]
 
     from google.genai import types
     comps = ", ".join(components) or "none on file"
-    grounded = await c.aio.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=DIAGNOSE_SEARCH_PROMPT.format(
+    grounded = await generate(
+        DIAGNOSE_SEARCH_PROMPT.format(
             year=vehicle["year"], make=vehicle["make"], model=vehicle["model"],
             mileage=vehicle.get("mileage") or "unknown", symptom=symptom, components=comps,
             language_name="Spanish" if lang == "es" else "English"),
-        config=types.GenerateContentConfig(
+        types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())], temperature=0.2),
     )
     answer = grounded.text or ""
@@ -160,10 +195,9 @@ async def diagnose(vehicle: dict, symptom: str, lang: str, components: list[str]
         if meta.search_entry_point:
             suggestions = meta.search_entry_point.rendered_content  # Google requires showing this
 
-    structured = await c.aio.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=DIAGNOSE_STRUCTURE_PROMPT.format(components=comps, answer=answer),
-        config={"response_mime_type": "application/json", "temperature": 0},
+    structured = await generate(
+        DIAGNOSE_STRUCTURE_PROMPT.format(components=comps, answer=answer),
+        {"response_mime_type": "application/json", "temperature": 0},
     )
     try:
         out = json.loads(structured.text)
@@ -179,18 +213,31 @@ async def diagnose(vehicle: dict, symptom: str, lang: str, components: list[str]
 VIN_RE = re.compile(r"\b[A-HJ-NPR-Z0-9]{17}\b")
 
 
+def _to_jpeg(image: bytes) -> bytes:
+    """Normalize any photo to a small JPEG so Gemini always sees an image."""
+    import io
+    from PIL import Image, ImageOps
+    img = Image.open(io.BytesIO(image))
+    img = ImageOps.exif_transpose(img).convert("RGB")  # fix phone rotation
+    img.thumbnail((1600, 1600))                          # plenty for reading a VIN
+    out = io.BytesIO()
+    img.save(out, format="JPEG", quality=85)
+    return out.getvalue()
+
+
 async def read_vin_photo(image: bytes, mime_type: str) -> str | None:
     """Reads a VIN from a photo. The image is never stored."""
     c = client()
     if c is None:
         return None
     from google.genai import types
-    resp = await c.aio.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=[
-            types.Part.from_bytes(data=image, mime_type=mime_type),
+    jpeg = _to_jpeg(image)
+    resp = await generate(
+        [
+            types.Part.from_bytes(data=jpeg, mime_type="image/jpeg"),
             "Read the 17-character vehicle VIN in this photo. Reply with only the VIN, or NONE.",
         ],
+        None,
     )
     m = VIN_RE.search((resp.text or "").upper().replace(" ", ""))
     return m.group(0) if m else None

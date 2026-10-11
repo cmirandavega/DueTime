@@ -32,17 +32,27 @@ def rows(path: str):
     with open(path, newline="", encoding="utf-8") as f:
         for r in csv.DictReader(f):
             price, year = to_int(r.get("price")), to_int(r.get("year"))
-            make, model = (r.get("manufacturer") or "").strip().lower(), (r.get("model") or "").strip().lower()
+            make = (r.get("manufacturer") or "").strip().lower()
+            model = (r.get("model") or "").strip().lower()
             posted = (r.get("posting_date") or "").strip()
+
+            # 1. Skip rows missing anything we need
             if not (price and year and make and model and posted):
                 continue
+            # 2. Skip junk: fake prices, bad years
+            if not (500 <= price <= 200_000) or not (1950 <= year <= 2025):
+                continue
+            # 3. Impossible mileage -> unknown
+            odo = to_int(r.get("odometer"))
+            if odo is not None and not (0 <= odo <= 1_000_000):
+                odo = None
+
             try:
                 posted_at = datetime.strptime(posted, "%Y-%m-%dT%H:%M:%S%z")
             except ValueError:
                 continue
-            yield (posted_at, make, model, year, to_int(r.get("odometer")), price,
+            yield (posted_at, make, model, year, odo, price,
                    (r.get("condition") or None), (r.get("state") or None))
-
 
 def main():
     ap = argparse.ArgumentParser()

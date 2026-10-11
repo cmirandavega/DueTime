@@ -101,3 +101,11 @@ textarea { width: 100%; font: inherit; color: var(--ink); background: var(--bg);
 .error { color: var(--alert); }
 .disclaimers { padding-left: 18px; }
 footer { text-align: center; font-size: 13px; margin-top: 24px; }
+
+.card.good { border-color: var(--brand); background: var(--brand-soft); }
+.due { list-style: none; padding: 0; margin: 0; }
+.due li { padding: 10px 0; border-top: 1px solid var(--line); }
+.due li:first-child { border-top: 0; padding-top: 0; }
+.due label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; color: var(--ink); font-size: 16px; margin: 0; }
+.due input[type="checkbox"] { width: 22px; height: 22px; margin: 2px 0 0; flex: 0 0 auto; accent-color: var(--brand); }
+.due li.done strong { text-decoration: line-through; color: var(--muted); }

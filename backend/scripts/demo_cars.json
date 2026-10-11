@@ -1,5 +1,5 @@
 [
   {"year": 2001, "make": "ACURA",  "model": "INTEGRA", "mileage": 168000, "story": "Dad's car: overdue transmission service"},
   {"year": 2013, "make": "NISSAN", "model": "ALTIMA",  "mileage": 110000, "asking_price": 4500, "story": "Buying mode: CVT range + price check"},
-  {"year": 2004, "make": "BMW",    "model": "330CI",   "mileage": 150000, "story": "DIY card: rear main seal"}
+  {"year": 2004, "make": "BMW", "model": "3 SERIES", "mileage": 150000, "story": "DIY card: rear main seal"}
 ]

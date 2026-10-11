@@ -44,7 +44,11 @@ export const strings = {
     who: { diy: 'You can check this', shop: 'Shop job', either: 'DIY or shop' },
     reportedByOwners: (n) => `${n} owners of this car reported problems in this area`,
     sources: 'Sources to read more',
-    diagnoseDisclaimer: 'Found by searching the web. Read the sources and confirm before buying parts.'
+    diagnoseDisclaimer: 'Found by searching the web. Read the sources and confirm before buying parts.',
+    dueTitle: 'Has this been done?',
+    dueLeft: (n, total) => `${n} of ${total} still needed. Check off what's already been done.`,
+    dueAllDone: "You're caught up on everything due at this mileage.",
+    dueDone: 'Done',
   },
   es: {
     tagline: 'Sabe lo que tu carro necesita antes de que se rompa.',
@@ -90,6 +94,10 @@ export const strings = {
     who: { diy: 'Lo puedes revisar tú', shop: 'Trabajo de taller', either: 'Tú o el taller' },
     reportedByOwners: (n) => `${n} dueños de este carro reportaron problemas en esta área`,
     sources: 'Fuentes para leer más',
-    diagnoseDisclaimer: 'Encontrado buscando en la web. Lee las fuentes y confirma antes de comprar piezas.'
+    diagnoseDisclaimer: 'Encontrado buscando en la web. Lee las fuentes y confirma antes de comprar piezas.',
+    dueTitle: '¿Ya se hizo esto?',
+    dueLeft: (n, total) => `Faltan ${n} de ${total}. Marca lo que ya se hizo.`,
+    dueAllDone: 'Estás al día con todo lo que toca a este millaje.',
+    dueDone: 'Hecho',
   }
 }
