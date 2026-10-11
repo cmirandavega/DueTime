@@ -1,0 +1,260 @@
+{
+ "vehicle": {
+  "vin": null,
+  "year": 2001,
+  "make": "ACURA",
+  "model": "INTEGRA",
+  "mileage": 316000
+ },
+ "mode": "own",
+ "language": "es",
+ "summary": "Su Acura Integra tiene 316,000 millas y necesita atención en el mantenimiento regular para seguir funcionando bien.",
+ "recalls": [
+  {
+   "campaign": "06E060000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Algunas luces de repuesto no tienen los reflectores laterales ámbar requeridos.",
+   "risk": "low",
+   "remedy_plain": "El fabricante reemplazará las lámparas sin costo."
+  },
+  {
+   "campaign": "06E049000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Ciertas luces delanteras y laterales de repuesto carecen de reflectores ámbar.",
+   "risk": "low",
+   "remedy_plain": "El fabricante reemplazará las lámparas que no cumplen con la norma."
+  },
+  {
+   "campaign": "06E026000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Lámparas de esquina y faros de repuesto vendidos sin los reflectores laterales ámbar.",
+   "risk": "low",
+   "remedy_plain": "El fabricante ofrecerá recomprar las lámparas."
+  },
+  {
+   "campaign": "06E032000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Faros de repuesto que no tienen los reflectores laterales ámbar obligatorios.",
+   "risk": "low",
+   "remedy_plain": "El fabricante ofrecerá un reembolso por la compra de las luces."
+  },
+  {
+   "campaign": "02V196000",
+   "component": "AIR BAGS:FRONTAL",
+   "summary_plain": "Las bolsas de aire del pasajero no fueron bien soldadas y podrían no abrirse en un choque.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios reemplazarán el módulo de la bolsa de aire del pasajero."
+  }
+ ],
+ "known_problems": [
+  {
+   "component": "TIRES",
+   "complaint_count": 2,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Las llantas (neumáticos) de hule que conectan su auto con el suelo han reportado problemas de desgaste o fallas."
+  },
+  {
+   "component": "AIR BAGS",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Las bolsas de aire son las almohadas inflables de seguridad que se abren en un choque para protegerlo."
+  },
+  {
+   "component": "POWER TRAIN",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "El tren motriz son las piezas metálicas que llevan la fuerza del motor a las ruedas para que el auto avance."
+  },
+  {
+   "component": "ENGINE AND ENGINE COOLING",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "El sistema de enfriamiento del motor evita que la máquina se caliente demasiado y se dañe."
+  },
+  {
+   "component": "STEERING",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "El sistema de dirección son las piezas que hacen que las ruedas giren hacia donde usted mueve el volante."
+  }
+ ],
+ "maintenance_due": [
+  {
+   "service": "Cambio de banda de tiempo",
+   "interval_miles": 100000,
+   "status": "overdue",
+   "why": "La banda de tiempo sincroniza las partes internas del motor; si se rompe, el motor puede destruirse.",
+   "verify": true
+  },
+  {
+   "service": "Cambio de líquido refrigerante",
+   "interval_miles": 60000,
+   "status": "overdue",
+   "why": "El líquido refrigerante es el líquido que circula por el motor para mantenerlo a una temperatura segura.",
+   "verify": true
+  },
+  {
+   "service": "Cambio de bujías",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Las bujías son piezas pequeñas que crean la chispa eléctrica para encender el combustible en el motor.",
+   "verify": true
+  },
+  {
+   "service": "Cambio de líquido de frenos",
+   "interval_miles": 45000,
+   "status": "overdue",
+   "why": "El líquido de frenos transmite la fuerza de su pie en el pedal para detener las ruedas.",
+   "verify": true
+  },
+  {
+   "service": "Cambio de aceite de transmisión",
+   "interval_miles": 60000,
+   "status": "overdue",
+   "why": "La transmisión es la caja de cambios que ayuda a usar la potencia del motor a diferentes velocidades.",
+   "verify": true
+  }
+ ],
+ "declined_services": [
+  {
+   "rank": 1,
+   "service": "Cambio de banda de tiempo",
+   "risk_if_ignored": "Si la banda se rompe al conducir, el motor sufrirá daños graves y ya no encenderá.",
+   "cost_if_ignored_usd": [
+    2000,
+    4500
+   ],
+   "cost_to_do_now_usd": [
+    400,
+    800
+   ]
+  },
+  {
+   "rank": 2,
+   "service": "Cambio de aceite de transmisión",
+   "risk_if_ignored": "La transmisión se quedará sin lubricación y dejará de hacer los cambios de velocidad.",
+   "cost_if_ignored_usd": [
+    1500,
+    3500
+   ],
+   "cost_to_do_now_usd": [
+    100,
+    250
+   ]
+  },
+  {
+   "rank": 3,
+   "service": "Cambio de líquido refrigerante",
+   "risk_if_ignored": "El motor se sobrecalentará y las piezas metálicas se deformarán o fundirán.",
+   "cost_if_ignored_usd": [
+    1000,
+    3000
+   ],
+   "cost_to_do_now_usd": [
+    80,
+    150
+   ]
+  },
+  {
+   "rank": 4,
+   "service": "Cambio de líquido de frenos",
+   "risk_if_ignored": "El pedal se sentirá esponjoso y podría perder la capacidad de frenar a tiempo.",
+   "cost_if_ignored_usd": [
+    500,
+    1500
+   ],
+   "cost_to_do_now_usd": [
+    90,
+    160
+   ]
+  },
+  {
+   "rank": 5,
+   "service": "Cambio de bujías",
+   "risk_if_ignored": "El motor fallará, gastará más gasolina y perderá fuerza al acelerar.",
+   "cost_if_ignored_usd": [
+    200,
+    600
+   ],
+   "cost_to_do_now_usd": [
+    50,
+    120
+   ]
+  }
+ ],
+ "diy_cards": [
+  {
+   "job": "Cambio de bujías",
+   "difficulty": "easy",
+   "time_hours": [
+    0.5,
+    1.0
+   ],
+   "tools": [
+    "Llave para bujías",
+    "Matraca",
+    "Calibrador de espacio"
+   ],
+   "parts_cost_usd": [
+    15,
+    30
+   ],
+   "shop_cost_usd": [
+    100,
+    200
+   ],
+   "safety_note": null
+  },
+  {
+   "job": "Cambio de líquido refrigerante",
+   "difficulty": "moderate",
+   "time_hours": [
+    1.0,
+    2.0
+   ],
+   "tools": [
+    "Desarmador",
+    "Embudo",
+    "Recipiente para drenar"
+   ],
+   "parts_cost_usd": [
+    20,
+    40
+   ],
+   "shop_cost_usd": [
+    150,
+    250
+   ],
+   "safety_note": "Asegúrese de que el motor esté completamente frío para evitar quemaduras graves con el líquido caliente."
+  }
+ ],
+ "pre_purchase": {
+  "inspect": [],
+  "should_be_done": [],
+  "ask_seller": []
+ },
+ "price_check": {
+  "asking_price": null,
+  "comps": 0,
+  "p25": null,
+  "median": null,
+  "p75": null,
+  "verdict": "not_enough_data",
+  "trend": []
+ },
+ "sources": [
+  "NHTSA vPIC",
+  "NHTSA Recalls",
+  "NHTSA Complaints",
+  "Craigslist used cars (Kaggle)"
+ ],
+ "disclaimers": [
+  "Los costos y la dificultad son estimados, no cotizaciones.",
+  "Frenos, bolsas de aire y líneas de combustible: que un profesional revise tu trabajo."
+ ]
+}

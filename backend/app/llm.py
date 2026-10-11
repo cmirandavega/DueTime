@@ -71,7 +71,7 @@ Rules:
 - recalls: one entry per recall in FACTS, same campaign numbers. Empty list if none.
 - known_problems: one entry per component in FACTS, in the same order, using its exact component string.
 - maintenance_due: use the manufacturer's typical schedule for this exact car from general knowledge. Mark every item verify=true.
-- declined_services: services that should have been done by this mileage, ranked by cost of ignoring them. Ranges, not single numbers.
+- declined_services: every service whose interval has passed by this mileage, ranked by cost of ignoring them (most expensive first). Ranges, not single numbers. Always evaluate these commonly skipped, costly services and include each one that is due: transmission fluid (automatic or manual), timing belt (if the engine has one), coolant, brake fluid, spark plugs. List 3 to 6 items.
 - diy_cards: the top 2-3 jobs from maintenance_due and known_problems. Brakes, airbags, fuel lines, and anything needing a lift get a safety_note saying to have a professional check the work.
 - pre_purchase: fill only if mode is buying; otherwise use empty lists.
 - Costs are US-dollar estimates, not quotes.

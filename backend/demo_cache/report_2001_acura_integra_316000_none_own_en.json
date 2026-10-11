@@ -1,0 +1,238 @@
+{
+ "vehicle": {
+  "vin": null,
+  "year": 2001,
+  "make": "ACURA",
+  "model": "INTEGRA",
+  "mileage": 316000
+ },
+ "mode": "own",
+ "language": "en",
+ "summary": "Your 2001 Acura Integra has made it an incredible 316,000 miles, but it has several open recalls on the lights and airbags that need attention.",
+ "recalls": [
+  {
+   "campaign": "06E060000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Certain replacement lamps were sold without the required amber side reflectors.",
+   "risk": "medium",
+   "remedy_plain": "The manufacturer will replace the lamps for free."
+  },
+  {
+   "campaign": "06E049000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Certain replacement headlights and marker lights do not have amber side reflectors.",
+   "risk": "medium",
+   "remedy_plain": "The manufacturer will replace the lamps for free."
+  },
+  {
+   "campaign": "06E026000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Certain replacement corner lights and headlights lack amber side reflectors.",
+   "risk": "medium",
+   "remedy_plain": "The manufacturer will offer to repurchase the lamps."
+  },
+  {
+   "campaign": "06E032000",
+   "component": "EXTERIOR LIGHTING",
+   "summary_plain": "Certain aftermarket headlights and corner lights were sold without amber side reflectors.",
+   "risk": "medium",
+   "remedy_plain": "The manufacturer will offer reimbursement for the purchase of the lights."
+  },
+  {
+   "campaign": "02V196000",
+   "component": "AIR BAGS:FRONTAL",
+   "summary_plain": "Some passenger air bag modules were not properly welded and might fail to deploy in a crash.",
+   "risk": "high",
+   "remedy_plain": "Dealers will replace the passenger air bag module for free."
+  }
+ ],
+ "known_problems": [
+  {
+   "component": "TIRES",
+   "complaint_count": 2,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Drivers have reported issues with tires, which are the rubber rings that grip the road."
+  },
+  {
+   "component": "AIR BAGS",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Drivers have reported issues with air bags, which are safety cushions that inflate during a crash."
+  },
+  {
+   "component": "POWER TRAIN",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Drivers have reported issues with the power train, which includes the engine parts that send power to the wheels."
+  },
+  {
+   "component": "ENGINE AND ENGINE COOLING",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Drivers have reported issues with the engine and engine cooling system, which keeps the motor from overheating."
+  },
+  {
+   "component": "STEERING",
+   "complaint_count": 1,
+   "typical_mileage": null,
+   "in_range": null,
+   "explanation": "Drivers have reported issues with the steering, which is the system that turns your front wheels."
+  }
+ ],
+ "maintenance_due": [
+  {
+   "service": "Timing Belt Replacement",
+   "interval_miles": 105000,
+   "status": "overdue",
+   "why": "The timing belt is a rubber band that keeps internal engine parts moving together, and it wears out over time.",
+   "verify": true
+  },
+  {
+   "service": "Spark Plugs",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Spark plugs create the small fires inside your engine that make it run.",
+   "verify": true
+  },
+  {
+   "service": "Coolant Flush",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Coolant is the liquid that flows through your engine to keep it from getting too hot.",
+   "verify": true
+  },
+  {
+   "service": "Transmission Fluid Change",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Transmission fluid is the oil that helps your car change gears smoothly.",
+   "verify": true
+  },
+  {
+   "service": "Brake Fluid Flush",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Brake fluid is the liquid that pushes your brakes to help you stop.",
+   "verify": true
+  }
+ ],
+ "declined_services": [
+  {
+   "rank": 1,
+   "service": "Timing Belt Replacement",
+   "risk_if_ignored": "If the timing belt snaps, your engine will experience catastrophic internal damage and stop working completely.",
+   "cost_if_ignored_usd": [
+    2000,
+    4000
+   ],
+   "cost_to_do_now_usd": [
+    500,
+    900
+   ]
+  },
+  {
+   "rank": 2,
+   "service": "Transmission Fluid Change",
+   "risk_if_ignored": "Old fluid can cause your transmission to fail, meaning your car will no longer be able to drive.",
+   "cost_if_ignored_usd": [
+    1500,
+    3500
+   ],
+   "cost_to_do_now_usd": [
+    80,
+    150
+   ]
+  },
+  {
+   "rank": 3,
+   "service": "Coolant Flush",
+   "risk_if_ignored": "Old coolant can cause your engine to overheat, leading to warped engine parts and complete engine failure.",
+   "cost_if_ignored_usd": [
+    1500,
+    3000
+   ],
+   "cost_to_do_now_usd": [
+    100,
+    200
+   ]
+  },
+  {
+   "rank": 4,
+   "service": "Brake Fluid Flush",
+   "risk_if_ignored": "Old fluid absorbs water and can cause your brakes to feel spongy or fail completely.",
+   "cost_if_ignored_usd": [
+    500,
+    1500
+   ],
+   "cost_to_do_now_usd": [
+    90,
+    160
+   ]
+  },
+  {
+   "rank": 5,
+   "service": "Spark Plugs",
+   "risk_if_ignored": "Worn plugs will cause your engine to misfire, run poorly, and waste a lot of fuel.",
+   "cost_if_ignored_usd": [
+    300,
+    800
+   ],
+   "cost_to_do_now_usd": [
+    60,
+    150
+   ]
+  }
+ ],
+ "diy_cards": [
+  {
+   "job": "Spark Plug Replacement",
+   "difficulty": "easy",
+   "time_hours": [
+    0.5,
+    1.0
+   ],
+   "tools": [
+    "Spark plug socket",
+    "Ratchet",
+    "Gapping tool"
+   ],
+   "parts_cost_usd": [
+    20,
+    40
+   ],
+   "shop_cost_usd": [
+    100,
+    200
+   ],
+   "safety_note": null
+  }
+ ],
+ "pre_purchase": {
+  "inspect": [],
+  "should_be_done": [],
+  "ask_seller": []
+ },
+ "price_check": {
+  "asking_price": null,
+  "comps": 0,
+  "p25": null,
+  "median": null,
+  "p75": null,
+  "verdict": "not_enough_data",
+  "trend": []
+ },
+ "sources": [
+  "NHTSA vPIC",
+  "NHTSA Recalls",
+  "NHTSA Complaints",
+  "Craigslist used cars (Kaggle)"
+ ],
+ "disclaimers": [
+  "Costs and difficulty are estimates, not quotes.",
+  "Brakes, airbags, and fuel lines: have a professional check your work."
+ ]
+}
