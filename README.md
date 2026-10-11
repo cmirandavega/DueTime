@@ -25,6 +25,7 @@ Built at Hacklanta 2026 · Social Good track (presented by Cox Automotive).
 ```
 phone (PWA) ──► FastAPI ──► NHTSA vPIC / Recalls / Complaints (public APIs)
                    │──────► Tiger Data: complaint mileage curves + price comps (public data only)
+                   ├──────► Groq (backup when Gemini is down)
                    └──────► Gemini: plain-language report, Spanish, VIN photo reading,
                             symptom lookup grounded in Google Search (returns sources)
 ```

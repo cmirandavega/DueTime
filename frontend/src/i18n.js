@@ -49,6 +49,10 @@ export const strings = {
     dueLeft: (n, total) => `${n} of ${total} still needed. Check off what's already been done.`,
     dueAllDone: "You're caught up on everything due at this mileage.",
     dueDone: 'Done',
+    dueMilesLabel: 'About what mileage was this done?',
+    dueMilesPlaceholder: 'About what mileage? (optional)',
+    bandLabel: 'Owners report this around',
+    bandYou: 'your car:',
   },
   es: {
     tagline: 'Sabe lo que tu carro necesita antes de que se rompa.',
@@ -99,5 +103,9 @@ export const strings = {
     dueLeft: (n, total) => `Faltan ${n} de ${total}. Marca lo que ya se hizo.`,
     dueAllDone: 'Estás al día con todo lo que toca a este millaje.',
     dueDone: 'Hecho',
+    dueMilesLabel: '¿Más o menos a qué millaje se hizo?',
+    dueMilesPlaceholder: '¿A qué millaje, más o menos? (opcional)',
+    bandLabel: 'Los dueños lo reportan alrededor de',
+    bandYou: 'tu carro:',
   }
 }

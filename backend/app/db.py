@@ -4,6 +4,8 @@ The database holds PUBLIC car data only: NHTSA complaints and anonymized
 Craigslist listings. No user data is ever written here.
 If DATABASE_URL is empty, every function returns None and the app still runs.
 """
+import time
+
 import psycopg
 from psycopg.rows import dict_row
 
@@ -13,10 +15,18 @@ from .config import DATABASE_URL
 async def _fetch(sql: str, params: dict) -> list[dict] | None:
     if not DATABASE_URL:
         return None
-    async with await psycopg.AsyncConnection.connect(DATABASE_URL, row_factory=dict_row) as conn:
-        async with conn.cursor() as cur:
-            await cur.execute(sql, params)
-            return await cur.fetchall()
+    t0 = time.perf_counter()
+    try:
+        async with await psycopg.AsyncConnection.connect(DATABASE_URL, row_factory=dict_row) as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(sql, params)
+                rows = await cur.fetchall()
+    except psycopg.Error as e:
+        print(f"[tiger] query failed: {type(e).__name__}: {e}")
+        return None
+    name = " ".join(sql.split())[:70]
+    print(f"[tiger] {len(rows)} rows in {(time.perf_counter() - t0) * 1000:.0f} ms | {name}")
+    return rows
 
 
 FAILURE_CURVES = """

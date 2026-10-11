@@ -3,8 +3,8 @@
 Zero Data: no accounts, no cookies, no analytics, no request logging.
 Run uvicorn with --no-access-log so VINs never land in server logs.
 """
-import time
 import asyncio
+import json
 from typing import Literal
 
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from . import db, llm, nhtsa
-from .config import ALLOWED_ORIGINS
+from .config import ALLOWED_ORIGINS, DEMO_CACHE_DIR, DEMO_MODE
 
 app = FastAPI(title="DueTime API")
 app.add_middleware(
@@ -86,6 +86,15 @@ async def diagnose(body: DiagnoseIn):
     return result
 
 
+# Finished reports, keyed by the CAR (never by a person). Public data only.
+_report_cache: dict[tuple, dict] = {}
+
+
+def _report_path(key: tuple):
+    name = "report_" + "_".join(str(k) for k in key).lower().replace(" ", "-") + ".json"
+    return DEMO_CACHE_DIR / name
+
+
 @app.get("/api/report")
 async def report(
     year: int = Query(..., ge=1950, le=2030),
@@ -98,7 +107,15 @@ async def report(
     vin: str | None = None,
 ):
     make, model = make.strip().upper(), model.strip().upper()
-    vehicle = {"vin": vin, "year": year, "make": make, "model": model, "mileage": mileage}
+    key = (year, make, model, mileage, asking_price, mode, lang)
+    if key in _report_cache:
+        return _report_cache[key]
+    path = _report_path(key)
+    if DEMO_MODE and path.exists():
+        _report_cache[key] = json.loads(path.read_text(encoding="utf-8"))
+        return _report_cache[key]
+
+    vehicle = {"vin": None, "year": year, "make": make, "model": model, "mileage": mileage}
 
     recalls, complaints_api, curves, price = await asyncio.gather(
         nhtsa.recalls(year, make, model),
@@ -122,7 +139,7 @@ async def report(
         "explanation": explanations.get(p["component"], ""),
     } for p in source]
 
-    return {
+    result = {
         "vehicle": vehicle,
         "mode": mode,
         "language": lang,
@@ -137,3 +154,10 @@ async def report(
         "sources": ["NHTSA vPIC", "NHTSA Recalls", "NHTSA Complaints", "Craigslist used cars (Kaggle)"],
         "disclaimers": DISCLAIMERS[lang],
     }
+
+    # Only keep real AI output; the no-AI fallback is retried next time.
+    if not written.get("_fallback"):
+        _report_cache[key] = result
+        if DEMO_MODE:
+            path.write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
+    return result

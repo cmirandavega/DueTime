@@ -12,9 +12,12 @@ export default function App() {
   const [query, setQuery] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [log, setLog] = useState([]) // service log, shared with the checklist; never saved
   const t = strings[lang]
 
   async function run(q, language = lang) {
+    const sameCar = query && q.year == query.year && q.make === query.make && q.model === query.model
+    if (!sameCar) setLog([])
     setQuery(q)
     setLoading(true)
     setError('')
@@ -52,9 +55,9 @@ export default function App() {
 
       <CarForm t={t} onSubmit={run} loading={loading} />
       {error && <p className="error">{error}</p>}
-      {report && <Report report={report} t={t} />}
+      {report && <Report report={report} t={t} log={log} setLog={setLog} />}
       {report && <SymptomCard t={t} vehicle={report.vehicle} lang={lang} />}
-      {report && <ServiceLog t={t} vehicle={report.vehicle} />}
+      {report && <ServiceLog t={t} vehicle={report.vehicle} items={log} setItems={setLog} />}
 
       <footer className="muted">{t.privacy}</footer>
     </div>

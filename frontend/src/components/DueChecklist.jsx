@@ -1,13 +1,19 @@
-import { useState } from 'react'
-
 const usd = (n) => (n == null ? '—' : `$${Number(n).toLocaleString()}`)
 const range = (r) => (Array.isArray(r) && r.length === 2 ? `${usd(r[0])}–${usd(r[1])}` : '—')
 
-// Zero Data: checked state lives only in this component. Nothing is saved.
-export default function DueChecklist({ items, t }) {
-  const [done, setDone] = useState({})
-  const toggle = (s) => setDone((d) => ({ ...d, [s]: !d[s] }))
-  const left = items.filter((d) => !done[d.service]).length
+// Checked items live in the shared service log (App state). Nothing is saved anywhere.
+export default function DueChecklist({ items, t, log = [], setLog = () => {} }) {
+  const entry = (service) => log.find((x) => x.source === 'checklist' && x.service === service)
+
+  function toggle(service) {
+    if (entry(service)) setLog(log.filter((x) => !(x.source === 'checklist' && x.service === service)))
+    else setLog([...log, { service, miles: '', declined: false, source: 'checklist' }])
+  }
+
+  const setMiles = (service, miles) =>
+    setLog(log.map((x) => (x.source === 'checklist' && x.service === service ? { ...x, miles } : x)))
+
+  const left = items.filter((d) => !entry(d.service)).length
   const allDone = left === 0
 
   return (
@@ -16,16 +22,14 @@ export default function DueChecklist({ items, t }) {
       <p className="muted">{allDone ? t.dueAllDone : t.dueLeft(left, items.length)}</p>
       <ul className="due">
         {items.map((d) => {
-          const isDone = !!done[d.service]
+          const e = entry(d.service)
           return (
-            <li key={d.service} className={isDone ? 'done' : ''}>
+            <li key={d.service} className={e ? 'done' : ''}>
               <label>
-                <input type="checkbox" checked={isDone} onChange={() => toggle(d.service)} />
+                <input type="checkbox" checked={!!e} onChange={() => toggle(d.service)} />
                 <span>
                   <strong>{d.service}</strong>
-                  {isDone ? (
-                    <span className="pill">{t.dueDone}</span>
-                  ) : (
+                  {!e && (
                     <>
                       <p>{d.risk_if_ignored}</p>
                       <p className="costs">
@@ -36,6 +40,13 @@ export default function DueChecklist({ items, t }) {
                   )}
                 </span>
               </label>
+              {e && (
+                <div className="when">
+                  <span className="pill">{t.dueDone}</span>
+                  <input inputMode="numeric" placeholder={t.dueMilesPlaceholder} aria-label={t.dueMilesLabel}
+                    value={e.miles} onChange={(ev) => setMiles(d.service, ev.target.value.replace(/[^\d]/g, ''))} />
+                </div>
+              )}
             </li>
           )
         })}

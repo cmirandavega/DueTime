@@ -109,3 +109,11 @@ footer { text-align: center; font-size: 13px; margin-top: 24px; }
 .due label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; color: var(--ink); font-size: 16px; margin: 0; }
 .due input[type="checkbox"] { width: 22px; height: 22px; margin: 2px 0 0; flex: 0 0 auto; accent-color: var(--brand); }
 .due li.done strong { text-decoration: line-through; color: var(--muted); }
+
+.due .when { display: flex; align-items: center; gap: 8px; margin: 8px 0 0 32px; }
+.due .when input { margin: 0; max-width: 240px; }
+
+.band-wrap { margin: 6px 0; }
+.range { position: relative; height: 10px; background: var(--line); border-radius: 999px; margin: 8px 0 4px; }
+.range .band { position: absolute; top: 0; bottom: 0; background: var(--warn); opacity: 0.6; border-radius: 999px; }
+.range .you { position: absolute; top: -4px; width: 4px; height: 18px; background: var(--ink); border-radius: 2px; transform: translateX(-2px); }

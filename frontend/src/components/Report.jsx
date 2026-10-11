@@ -4,6 +4,21 @@ const usd = (n) => (n == null ? '—' : `$${Number(n).toLocaleString()}`)
 const range = (r) => (Array.isArray(r) && r.length === 2 ? `${usd(r[0])}–${usd(r[1])}` : '—')
 const miles = (n) => (n == null ? '—' : `${Number(n).toLocaleString()} mi`)
 
+// Where owners report this failure (Tiger Data percentiles) vs. this car's mileage
+function FailureBand({ tm, you, t }) {
+  const max = Math.max(tm.p75, you) * 1.15
+  const pct = (m) => `${(m / max) * 100}%`
+  return (
+    <div className="band-wrap">
+      <div className="range" role="img" aria-label={`${t.bandLabel} ${miles(tm.p25)}–${miles(tm.p75)}; ${t.bandYou} ${miles(you)}`}>
+        <span className="band" style={{ left: pct(tm.p25), width: `calc(${pct(tm.p75)} - ${pct(tm.p25)})` }} />
+        <span className="you" style={{ left: pct(you) }} />
+      </div>
+      <p className="muted small">{t.bandLabel} {miles(tm.p25)}–{miles(tm.p75)} · {t.bandYou} {miles(you)}</p>
+    </div>
+  )
+}
+
 function Card({ title, lead, tone, children }) {
   return (
     <section className={`card ${tone || ''}`}>
@@ -14,7 +29,7 @@ function Card({ title, lead, tone, children }) {
   )
 }
 
-export default function Report({ report: r, t }) {
+export default function Report({ report: r, t, log, setLog }) {
   const v = r.vehicle
   const pre = r.pre_purchase || {}
   const p = r.price_check || {}
@@ -26,7 +41,7 @@ export default function Report({ report: r, t }) {
         <p className="summary">{r.summary}</p>
       </section>
 
-        {r.declined_services?.length > 0 && <DueChecklist items={r.declined_services} t={t} />}
+      {r.declined_services?.length > 0 && <DueChecklist items={r.declined_services} t={t} log={log} setLog={setLog} />}
 
       <Card title={t.recalls}>
         {r.recalls?.length ? (
@@ -52,6 +67,7 @@ export default function Report({ report: r, t }) {
                   {k.complaint_count != null && `${k.complaint_count} ${t.complaints}`}
                   {k.typical_mileage?.median ? ` · ${t.typically} ${miles(k.typical_mileage.median)}` : ''}
                 </p>
+                {k.typical_mileage?.p25 != null && v.mileage ? <FailureBand tm={k.typical_mileage} you={v.mileage} t={t} /> : null}
                 {k.in_range && <p className="flag">{t.inRange}</p>}
                 {k.explanation && <p>{k.explanation}</p>}
               </li>

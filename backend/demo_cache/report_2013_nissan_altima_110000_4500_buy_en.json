@@ -1,0 +1,351 @@
+{
+ "vehicle": {
+  "vin": null,
+  "year": 2013,
+  "make": "NISSAN",
+  "model": "ALTIMA",
+  "mileage": 110000
+ },
+ "mode": "buy",
+ "language": "en",
+ "summary": "This 2013 Nissan Altima is priced at $4,500, which is below market value, but it has a high record of transmission and airbag issues. You must confirm that all safety recalls were completed and have a mechanic check the transmission before buying.",
+ "recalls": [
+  {
+   "campaign": "15V681000",
+   "component": "AIR BAGS:FRONTAL",
+   "summary_plain": "A replacement seat sensor might incorrectly think the front passenger seat is empty.",
+   "risk": "high",
+   "remedy_plain": "Nissan dealers will update the seat sensor software for free."
+  },
+  {
+   "campaign": "16V911000",
+   "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+   "summary_plain": "An incorrect control unit may misclassify the front passenger.",
+   "risk": "high",
+   "remedy_plain": "Dealers will replace the control unit and update software for free."
+  },
+  {
+   "campaign": "15V486000",
+   "component": "FUEL SYSTEM, GASOLINE",
+   "summary_plain": "A loose seal where the fuel line meets the tank can leak gas during a crash.",
+   "risk": "high",
+   "remedy_plain": "Dealers will install a locking ring on the fuel tank for free."
+  },
+  {
+   "campaign": "14V138000",
+   "component": "ELECTRICAL SYSTEM:SOFTWARE",
+   "summary_plain": "Passenger seat software may falsely detect an adult seat as empty.",
+   "risk": "high",
+   "remedy_plain": "Dealers will update the air bag software free of charge."
+  },
+  {
+   "campaign": "16V244000",
+   "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+   "summary_plain": "The passenger seat sensor may mistake an adult for a child and turn off the air bag.",
+   "risk": "high",
+   "remedy_plain": "Dealers will reprogram or replace the air bag control units for free."
+  },
+  {
+   "campaign": "16V029000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "The backup hood latch can stick open, letting the hood fly up while driving.",
+   "risk": "high",
+   "remedy_plain": "Dealers will replace the hood latch with a new one for free."
+  },
+  {
+   "campaign": "14V565000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "Rust and debris can cause the backup hood latch to stick open.",
+   "risk": "high",
+   "remedy_plain": "Dealers will adjust, clean, or replace the hood latch mechanism for free."
+  },
+  {
+   "campaign": "15V116000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "An expanded recall for hood latches sticking in the unlatched position.",
+   "risk": "high",
+   "remedy_plain": "Dealers will modify or replace the latch assembly for free."
+  },
+  {
+   "campaign": "13V069000",
+   "component": "AIR BAGS",
+   "summary_plain": "Sensors in the passenger seat were built incorrectly and may shut off the air bag.",
+   "risk": "high",
+   "remedy_plain": "Dealers will inspect and replace the seat sensors for free."
+  },
+  {
+   "campaign": "13V158000",
+   "component": "TIRES:TEMPORARY/EMERGENCY SPARE TIRE",
+   "summary_plain": "The spare tire inside the trunk may have too much or too little air from the factory.",
+   "risk": "medium",
+   "remedy_plain": "Dealers will check and set the spare tire pressure for free."
+  },
+  {
+   "campaign": "12V494000",
+   "component": "STEERING",
+   "summary_plain": "Steering and suspension bolts were not tightened properly at the factory and could fall out.",
+   "risk": "high",
+   "remedy_plain": "Dealers will tighten the bolts to the proper specs for free."
+  },
+  {
+   "campaign": "20V315000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "The secondary hood latch lever can rust and jam over time.",
+   "risk": "high",
+   "remedy_plain": "Dealers will install a stronger spring and provide maintenance instructions for free."
+  }
+ ],
+ "known_problems": [
+  {
+   "component": "POWER TRAIN",
+   "complaint_count": 713,
+   "typical_mileage": {
+    "p25": 40000,
+    "median": 71000,
+    "p75": 93000
+   },
+   "in_range": false,
+   "explanation": "The continuous transmission (the system sending power to wheels) frequently hesitates, shudders, or fails early."
+  },
+  {
+   "component": "AIR BAGS",
+   "complaint_count": 527,
+   "typical_mileage": {
+    "p25": 2500,
+    "median": 18000,
+    "p75": 53218
+   },
+   "in_range": false,
+   "explanation": "Passenger seat sensors often fail to detect adults, disabling safety air bags."
+  },
+  {
+   "component": "EXTERIOR LIGHTING",
+   "complaint_count": 369,
+   "typical_mileage": {
+    "p25": 55000,
+    "median": 80000,
+    "p75": 106000
+   },
+   "in_range": false,
+   "explanation": "Low-beam headlights lose brightness over time due to inner lens degradation."
+  },
+  {
+   "component": "SUSPENSION",
+   "complaint_count": 310,
+   "typical_mileage": {
+    "p25": 78791,
+    "median": 100000,
+    "p75": 124075
+   },
+   "in_range": true,
+   "explanation": "Struts and shocks (parts that cushion bumps) tend to wear out around this mileage, causing clunking noises."
+  },
+  {
+   "component": "UNKNOWN OR OTHER",
+   "complaint_count": 236,
+   "typical_mileage": {
+    "p25": 46750,
+    "median": 71500,
+    "p75": 93500
+   },
+   "in_range": false,
+   "explanation": "Miscellaneous complaints cover interior trim, door latches, and accessory electronics."
+  },
+  {
+   "component": "ENGINE",
+   "complaint_count": 228,
+   "typical_mileage": {
+    "p25": 30248,
+    "median": 64000,
+    "p75": 93275
+   },
+   "in_range": false,
+   "explanation": "Engine mounts wear down, creating shaking or vibration when idling."
+  }
+ ],
+ "maintenance_due": [
+  {
+   "service": "Spark Plug Replacement",
+   "interval_miles": 105000,
+   "status": "overdue",
+   "why": "Worn spark plugs cause engine misfires and poor fuel mileage.",
+   "verify": true
+  },
+  {
+   "service": "CVT Transmission Fluid Change",
+   "interval_miles": 60000,
+   "status": "overdue",
+   "why": "Fresh fluid protects the sensitive automatic transmission from early failure.",
+   "verify": true
+  },
+  {
+   "service": "Brake Fluid Replacement",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Brake fluid absorbs moisture over time, reducing stopping power.",
+   "verify": true
+  },
+  {
+   "service": "Engine Air & Cabin Air Filters",
+   "interval_miles": 15000,
+   "status": "due",
+   "why": "Clean filters keep dirt out of the engine and keep cabin air fresh.",
+   "verify": true
+  }
+ ],
+ "declined_services": [
+  {
+   "rank": 1,
+   "service": "CVT Transmission Service",
+   "risk_if_ignored": "Ignoring fluid changes can cause total transmission failure, leaving the car unable to move.",
+   "cost_if_ignored_usd": [
+    4000,
+    5500
+   ],
+   "cost_to_do_now_usd": [
+    250,
+    400
+   ]
+  },
+  {
+   "rank": 2,
+   "service": "Spark Plug Replacement",
+   "risk_if_ignored": "Old plugs can damage ignition coils and reduce engine power.",
+   "cost_if_ignored_usd": [
+    600,
+    1000
+   ],
+   "cost_to_do_now_usd": [
+    200,
+    350
+   ]
+  },
+  {
+   "rank": 3,
+   "service": "Brake Fluid Flush",
+   "risk_if_ignored": "Moisture in the brake lines can rust internal parts and cause a soft brake pedal.",
+   "cost_if_ignored_usd": [
+    800,
+    1500
+   ],
+   "cost_to_do_now_usd": [
+    120,
+    200
+   ]
+  }
+ ],
+ "diy_cards": [
+  {
+   "job": "Engine Air Filter and Cabin Filter Replacement",
+   "difficulty": "easy",
+   "time_hours": [
+    0.5,
+    1.0
+   ],
+   "tools": [
+    "Hands (no tools needed)"
+   ],
+   "parts_cost_usd": [
+    30,
+    50
+   ],
+   "shop_cost_usd": [
+    100,
+    150
+   ],
+   "safety_note": null
+  },
+  {
+   "job": "Spark Plug Replacement",
+   "difficulty": "moderate",
+   "time_hours": [
+    1.0,
+    2.0
+   ],
+   "tools": [
+    "Socket set",
+    "Spark plug socket",
+    "Torque wrench"
+   ],
+   "parts_cost_usd": [
+    50,
+    90
+   ],
+   "shop_cost_usd": [
+    200,
+    350
+   ],
+   "safety_note": "Ensure the engine is completely cool before removing spark plugs."
+  },
+  {
+   "job": "Front Brake Pad & Rotor Replacement",
+   "difficulty": "hard",
+   "time_hours": [
+    2.0,
+    3.0
+   ],
+   "tools": [
+    "Jack and jack stands",
+    "Lug wrench",
+    "Brake caliper tool",
+    "Socket set"
+   ],
+   "parts_cost_usd": [
+    120,
+    200
+   ],
+   "shop_cost_usd": [
+    450,
+    700
+   ],
+   "safety_note": "Brakes are critical for safety. Have a professional check the work if you are unsure."
+  }
+ ],
+ "pre_purchase": {
+  "inspect": [
+   "Test drive for any transmission slipping, shaking, or slow response when accelerating",
+   "Check that the low-beam headlights are bright enough at night",
+   "Listen for knocking noises from the suspension when driving over bumps",
+   "Check the hood latch mechanism for rust or sticking"
+  ],
+  "should_be_done": [
+   "Hire an independent mechanic to do a full Pre-Purchase Inspection (PPI)",
+   "Run the VIN through a Nissan dealer to confirm all 12 recall repairs were completed"
+  ],
+  "ask_seller": [
+   "Do you have service records showing regular CVT transmission fluid changes?",
+   "Has the hood latch recall fix been completed by a Nissan dealer?",
+   "Why is the asking price lower than typical market value?"
+  ]
+ },
+ "price_check": {
+  "asking_price": 4500,
+  "comps": 616,
+  "p25": 4995,
+  "median": 7500,
+  "p75": 8995,
+  "verdict": "below_market",
+  "trend": [
+   {
+    "month": "2021-04-01",
+    "median": 7500,
+    "n": 441
+   },
+   {
+    "month": "2021-05-01",
+    "median": 7500,
+    "n": 175
+   }
+  ]
+ },
+ "sources": [
+  "NHTSA vPIC",
+  "NHTSA Recalls",
+  "NHTSA Complaints",
+  "Craigslist used cars (Kaggle)"
+ ],
+ "disclaimers": [
+  "Costs and difficulty are estimates, not quotes.",
+  "Brakes, airbags, and fuel lines: have a professional check your work."
+ ]
+}

@@ -14,8 +14,8 @@ def client():
     global _client
     if _client is None and GEMINI_API_KEY:
         from google import genai
-        # 25s timeout per try instead of the SDK's long default retries
-        _client = genai.Client(api_key=GEMINI_API_KEY, http_options={"timeout": 25_000})
+        # 60s timeout per try instead of the SDK's long default retries
+        _client = genai.Client(api_key=GEMINI_API_KEY, http_options={"timeout": 60_000})
     return _client
 
 
@@ -90,7 +90,8 @@ def _facts(recalls, complaints_api, curves, price) -> str:
 def _fallback(recalls, complaints_api, curves) -> dict:
     problems = curves if curves else complaints_api.get("by_component", [])
     return {
-        "summary": "Connect GEMINI_API_KEY for plain-language guidance. Raw data below.",
+        "_fallback": True,
+        "summary": "Plain-language guidance is unavailable right now. Here is the raw safety data; try again in a minute.",
         "recalls": [{"campaign": r["campaign"], "component": r["component"],
                      "summary_plain": r["summary"], "risk": "high" if r.get("park_it") else "medium",
                      "remedy_plain": r["remedy"]} for r in recalls],
