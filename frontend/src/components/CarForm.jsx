@@ -3,7 +3,7 @@ import { decodeVin, vinFromPhoto, usingSample } from '../api.js'
 
 // One-tap demo cars for the pitch. Match backend/scripts/demo_cars.json.
 const DEMO = [
-  { label: "'01 Integra", year: 2001, make: 'ACURA', model: 'INTEGRA', mileage: 168000, mode: 'own' },
+  { label: "'01 Integra", year: 2001, make: 'ACURA', model: 'INTEGRA', mileage: 316000, mode: 'own' },
   { label: "'13 Altima", year: 2013, make: 'NISSAN', model: 'ALTIMA', mileage: 110000, askingPrice: 4500, mode: 'buy' },
   { label: "'04 330Ci", year: 2004, make: 'BMW', model: '3 SERIES', mileage: 150000, mode: 'own' }
 ]
