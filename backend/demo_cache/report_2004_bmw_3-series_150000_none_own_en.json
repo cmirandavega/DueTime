@@ -1,0 +1,184 @@
+{
+ "vehicle": {
+  "vin": null,
+  "year": 2004,
+  "make": "BMW",
+  "model": "3 SERIES",
+  "mileage": 150000
+ },
+ "mode": "own",
+ "language": "en",
+ "summary": "Your 2004 BMW 3 Series has 150,000 miles and is showing its age in the electrical system and exterior lights. We need to stay on top of regular maintenance to keep it running smoothly.",
+ "recalls": [],
+ "known_problems": [
+  {
+   "component": "EXTERIOR LIGHTING",
+   "complaint_count": 43,
+   "typical_mileage": {
+    "p25": 65000,
+    "median": 89000,
+    "p75": 118500
+   },
+   "in_range": false,
+   "explanation": "Exterior lighting includes your headlights and taillights. These help you see and be seen at night, but they can sometimes fail."
+  },
+  {
+   "component": "ELECTRICAL SYSTEM",
+   "complaint_count": 20,
+   "typical_mileage": {
+    "p25": 78838,
+    "median": 97500,
+    "p75": 131000
+   },
+   "in_range": false,
+   "explanation": "The electrical system is the network of wires and fuses that power everything in your car. Problems here can affect many different features."
+  },
+  {
+   "component": "AIR BAGS",
+   "complaint_count": 19,
+   "typical_mileage": {
+    "p25": 68500,
+    "median": 80000,
+    "p75": 111500
+   },
+   "in_range": false,
+   "explanation": "Air bags are the cushions that inflate in a crash to protect you. Some drivers have reported issues with them on this car."
+  },
+  {
+   "component": "LATCHES/LOCKS/LINKAGES",
+   "complaint_count": 6,
+   "typical_mileage": {
+    "p25": 50112,
+    "median": 85225,
+    "p75": 112500
+   },
+   "in_range": false,
+   "explanation": ""
+  },
+  {
+   "component": "VISIBILITY/WIPER",
+   "complaint_count": 5,
+   "typical_mileage": {
+    "p25": 45000,
+    "median": 69000,
+    "p75": 94000
+   },
+   "in_range": false,
+   "explanation": "Visibility and wipers include your windshield wipers and defrosters. These keep your view clear when it rains or snows."
+  },
+  {
+   "component": "STRUCTURE:BODY",
+   "complaint_count": 3,
+   "typical_mileage": {
+    "p25": 88000,
+    "median": 120000,
+    "p75": 134000
+   },
+   "in_range": false,
+   "explanation": ""
+  }
+ ],
+ "maintenance_due": [
+  {
+   "service": "Spark Plug Replacement",
+   "interval_miles": 100000,
+   "status": "overdue",
+   "why": "Spark plugs create the spark that starts your engine fuel. At 150,000 miles, your current ones are well past their recommended lifespan.",
+   "verify": true
+  },
+  {
+   "service": "Drive Belt Replacement",
+   "interval_miles": 90000,
+   "status": "overdue",
+   "why": "A drive belt is a rubber band that turns engine accessories like your alternator. At this mileage, the rubber can crack and break.",
+   "verify": true
+  }
+ ],
+ "declined_services": [
+  {
+   "rank": 1,
+   "service": "Transmission Fluid Change",
+   "risk_if_ignored": "Old fluid can cause your transmission to slip, struggle to shift gears, or fail completely.",
+   "cost_if_ignored_usd": [
+    3500,
+    5500
+   ],
+   "cost_to_do_now_usd": [
+    250,
+    450
+   ]
+  },
+  {
+   "rank": 2,
+   "service": "Coolant Flush",
+   "risk_if_ignored": "Old coolant loses its ability to protect the engine from overheating, which can warp or crack the engine block.",
+   "cost_if_ignored_usd": [
+    2000,
+    4000
+   ],
+   "cost_to_do_now_usd": [
+    150,
+    300
+   ]
+  }
+ ],
+ "diy_cards": [
+  {
+   "job": "Spark Plug Replacement",
+   "difficulty": "moderate",
+   "time_hours": [
+    1.0,
+    2.0
+   ],
+   "tools": [
+    "Socket wrench",
+    "Spark plug socket",
+    "Gap tool"
+   ],
+   "parts_cost_usd": [
+    40,
+    80
+   ],
+   "shop_cost_usd": [
+    150,
+    300
+   ],
+   "safety_note": null
+  }
+ ],
+ "pre_purchase": {
+  "inspect": [],
+  "should_be_done": [],
+  "ask_seller": []
+ },
+ "price_check": {
+  "asking_price": null,
+  "comps": 15,
+  "p25": 4448,
+  "median": 5399,
+  "p75": 5725,
+  "verdict": "unknown",
+  "trend": [
+   {
+    "month": "2021-04-01",
+    "median": 4985,
+    "n": 10
+   },
+   {
+    "month": "2021-05-01",
+    "median": 5950,
+    "n": 5
+   }
+  ]
+ },
+ "sources": [
+  "NHTSA vPIC",
+  "NHTSA Recalls",
+  "NHTSA Complaints",
+  "Craigslist used cars (Kaggle)"
+ ],
+ "disclaimers": [
+  "Costs and difficulty are estimates, not quotes.",
+  "Brakes, airbags, and fuel lines: have a professional check your work."
+ ]
+}

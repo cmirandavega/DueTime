@@ -1,0 +1,309 @@
+{
+ "vehicle": {
+  "vin": null,
+  "year": 2013,
+  "make": "NISSAN",
+  "model": "ALTIMA",
+  "mileage": 110000
+ },
+ "mode": "buy",
+ "language": "es",
+ "summary": "Hola, soy DueTime. Este Nissan Altima 2013 tiene 110,000 millas y un precio por debajo del mercado, pero requiere una revisión cuidadosa por su historial de bolsas de aire y problemas de transmisión.",
+ "recalls": [
+  {
+   "campaign": "15V681000",
+   "component": "AIR BAGS:FRONTAL",
+   "summary_plain": "La computadora del asiento del pasajero puede no detectar a un adulto y desactivar la bolsa de aire.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios actualizarán el software de la computadora gratis."
+  },
+  {
+   "campaign": "16V911000",
+   "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+   "summary_plain": "Una pieza incorrecta en el asiento del pasajero puede hacer que la bolsa de aire funcione mal en un choque.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios reemplazarán la pieza y actualizarán el software gratis."
+  },
+  {
+   "campaign": "15V486000",
+   "component": "FUEL SYSTEM, GASOLINE",
+   "summary_plain": "Un sello mal instalado puede causar fugas de gasolina durante un choque.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios instalarán un anillo de retención gratis."
+  },
+  {
+   "campaign": "14V138000",
+   "component": "ELECTRICAL SYSTEM:SOFTWARE",
+   "summary_plain": "El sistema puede creer que el asiento del pasajero delantero está vacío cuando va un adulto.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios actualizarán el software de los sensores gratis."
+  },
+  {
+   "campaign": "16V244000",
+   "component": "AIR BAGS:SENSOR:OCCUPANT CLASSIFICATION",
+   "summary_plain": "El sensor del asiento delantero puede clasificar mal a un adulto como niño y apagar la bolsa de aire.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios reprogramarán la computadora de las bolsas de aire gratis."
+  },
+  {
+   "campaign": "16V029000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "El pestillo secundario del cofre puede atascarse y hacer que el cofre se abra mientras manejas.",
+   "risk": "medium",
+   "remedy_plain": "Los concesionarios reemplazarán el pestillo del cofre gratis."
+  },
+  {
+   "campaign": "14V565000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "La corrosión y la suciedad pueden trabar el pestillo secundario del cofre.",
+   "risk": "medium",
+   "remedy_plain": "Los concesionarios modificarán, limpiarán y lubricarán el pestillo."
+  },
+  {
+   "campaign": "15V116000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "El pestillo secundario del cofre puede quedarse abierto al cerrar el cofre.",
+   "risk": "medium",
+   "remedy_plain": "Los concesionarios ajustarán y lubricarán el pestillo gratis."
+  },
+  {
+   "campaign": "13V069000",
+   "component": "AIR BAGS",
+   "summary_plain": "Los sensores de detección de pasajeros pueden fallar y apagar permanentemente la bolsa de aire.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios inspeccionarán y reemplazarán los sensores gratis."
+  },
+  {
+   "campaign": "13V158000",
+   "component": "TIRES:TEMPORARY/EMERGENCY SPARE TIRE",
+   "summary_plain": "La llanta de refacción temporal pudo salir de fábrica con la presión incorrecta.",
+   "risk": "low",
+   "remedy_plain": "Los concesionarios inspeccionarán y ajustarán la presión de la llanta gratis."
+  },
+  {
+   "campaign": "12V494000",
+   "component": "STEERING",
+   "summary_plain": "Los pernos de la dirección y suspensión podían no estar bien apretados de fábrica y salirse.",
+   "risk": "high",
+   "remedy_plain": "Los concesionarios apretarán los pernos a la medida correcta."
+  },
+  {
+   "campaign": "20V315000",
+   "component": "LATCHES/LOCKS/LINKAGES:HOOD:LATCH",
+   "summary_plain": "El óxido puede hacer que el pestillo del cofre falle y este se abra en plena carretera.",
+   "risk": "medium",
+   "remedy_plain": "Los concesionarios instalarán un resorte más fuerte y una etiqueta de advertencia gratis."
+  }
+ ],
+ "known_problems": [
+  {
+   "component": "POWER TRAIN",
+   "complaint_count": 713,
+   "typical_mileage": {
+    "p25": 40000,
+    "median": 71000,
+    "p75": 93000
+   },
+   "in_range": false,
+   "explanation": "La transmisión (el sistema que lleva la fuerza del motor a las ruedas) tiene muchos reportes de fallas costosas alrededor de este millaje."
+  },
+  {
+   "component": "AIR BAGS",
+   "complaint_count": 527,
+   "typical_mileage": {
+    "p25": 2500,
+    "median": 18000,
+    "p75": 53218
+   },
+   "in_range": false,
+   "explanation": "Las bolsas de aire tienen múltiples reportes de fallas en los sensores del asiento del pasajero."
+  },
+  {
+   "component": "EXTERIOR LIGHTING",
+   "complaint_count": 369,
+   "typical_mileage": {
+    "p25": 55000,
+    "median": 80000,
+    "p75": 106000
+   },
+   "in_range": false,
+   "explanation": "Las luces exteriores tienen reportes frecuentes de problemas eléctricos y quemado prematuro de focos."
+  },
+  {
+   "component": "SUSPENSION",
+   "complaint_count": 310,
+   "typical_mileage": {
+    "p25": 78791,
+    "median": 100000,
+    "p75": 124075
+   },
+   "in_range": true,
+   "explanation": "La suspensión (partes que absorben los golpes del camino) suele desgastarse y requerir reparaciones cerca de las 100,000 millas."
+  },
+  {
+   "component": "UNKNOWN OR OTHER",
+   "complaint_count": 236,
+   "typical_mileage": {
+    "p25": 46750,
+    "median": 71500,
+    "p75": 93500
+   },
+   "in_range": false,
+   "explanation": "Existen varios reportes generales sobre fallas misceláneas de accesorios y componentes eléctricos."
+  },
+  {
+   "component": "ENGINE",
+   "complaint_count": 228,
+   "typical_mileage": {
+    "p25": 30248,
+    "median": 64000,
+    "p75": 93275
+   },
+   "in_range": false,
+   "explanation": ""
+  }
+ ],
+ "maintenance_due": [
+  {
+   "service": "Cambio de aceite y filtro",
+   "interval_miles": 5000,
+   "status": "due",
+   "why": "El aceite lubrica el motor y debe cambiarse regularmente para evitar desgaste interno.",
+   "verify": true
+  },
+  {
+   "service": "Cambio de líquido de transmisión",
+   "interval_miles": 30000,
+   "status": "overdue",
+   "why": "Este líquido especial ayuda a que la transmisión cambie de velocidad suavemente sin dañarse.",
+   "verify": true
+  },
+  {
+   "service": "Reemplazo de bujías",
+   "interval_miles": 100000,
+   "status": "due",
+   "why": "Las bujías crean la chispa que enciende la gasolina dentro del motor.",
+   "verify": true
+  }
+ ],
+ "declined_services": [
+  {
+   "rank": 1,
+   "service": "Cambio de aceite de transmisión",
+   "risk_if_ignored": "La transmisión puede fallar por completo, dejándote sin poder mover el carro y requiriendo un reemplazo total.",
+   "cost_if_ignored_usd": [
+    3500,
+    6000
+   ],
+   "cost_to_do_now_usd": [
+    150,
+    300
+   ]
+  },
+  {
+   "rank": 2,
+   "service": "Cambio de bujías",
+   "risk_if_ignored": "El motor gastará más gasolina, fallará al encender y puede dañar otras piezas costosas.",
+   "cost_if_ignored_usd": [
+    400,
+    900
+   ],
+   "cost_to_do_now_usd": [
+    100,
+    250
+   ]
+  }
+ ],
+ "diy_cards": [
+  {
+   "job": "Cambio de bujías",
+   "difficulty": "moderate",
+   "time_hours": [
+    1.0,
+    2.0
+   ],
+   "tools": [
+    "Dado para bujías",
+    "Matraca o llave de cuadro",
+    "Extensión"
+   ],
+   "parts_cost_usd": [
+    40,
+    80
+   ],
+   "shop_cost_usd": [
+    150,
+    300
+   ],
+   "safety_note": null
+  },
+  {
+   "job": "Inspección de suspensión",
+   "difficulty": "easy",
+   "time_hours": [
+    0.5,
+    1.0
+   ],
+   "tools": [
+    "Gato hidráulico",
+    "Torres de soporte",
+    "Linterna"
+   ],
+   "parts_cost_usd": [
+    0,
+    0
+   ],
+   "shop_cost_usd": [
+    100,
+    150
+   ],
+   "safety_note": "Asegúrate de usar torres de soporte firmes si levantas el carro. Haz que un profesional revise el trabajo antes de manejar."
+  }
+ ],
+ "pre_purchase": {
+  "inspect": [
+   "Estado de la transmisión CVT y si hace ruidos extraños al acelerar",
+   "Funcionamiento de las bolsas de aire y testigos en el tablero",
+   "Cierre correcto del pestillo del cofre"
+  ],
+  "should_be_done": [
+   "Revisión mecánica general en un taller independiente",
+   "Verificación de campañas de recalls pendientes en el sistema de Nissan"
+  ],
+  "ask_seller": [
+   "¿Se le ha cambiado el líquido de la transmisión alguna vez?",
+   "¿Tiene el historial de mantenimiento impreso?",
+   "¿Se han realizado las reparaciones gratuitas de los recalls?"
+  ]
+ },
+ "price_check": {
+  "asking_price": 4500,
+  "comps": 616,
+  "p25": 4995,
+  "median": 7500,
+  "p75": 8995,
+  "verdict": "below_market",
+  "trend": [
+   {
+    "month": "2021-04-01",
+    "median": 7500,
+    "n": 441
+   },
+   {
+    "month": "2021-05-01",
+    "median": 7500,
+    "n": 175
+   }
+  ]
+ },
+ "sources": [
+  "NHTSA vPIC",
+  "NHTSA Recalls",
+  "NHTSA Complaints",
+  "Craigslist used cars (Kaggle)"
+ ],
+ "disclaimers": [
+  "Los costos y la dificultad son estimados, no cotizaciones.",
+  "Frenos, bolsas de aire y líneas de combustible: que un profesional revise tu trabajo."
+ ]
+}
