@@ -50,6 +50,8 @@ phone (PWA, Vercel) ──► FastAPI (Render) ──► NHTSA vPIC / Recalls / 
 - VIN photos are processed in memory and never saved.
 - The service log lives only on the user's screen; they export it to their own device.
 - The database holds public car data only. Craigslist seller fields (URL, VIN, location, description) are dropped on import.
+- To build a report, car details (and VIN photos) are sent to NHTSA and Google Gemini, which process them under their own privacy policies. We don't store them.
+- Recent reports are cached only in your own browser for offline use; clearing site data removes them.
 
 ## Side challenges
 - **Shock Tracker: Zero Data:** no accounts, tracking, profiles, or stored personal info (see Privacy).
