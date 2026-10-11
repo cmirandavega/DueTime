@@ -53,6 +53,7 @@ export const strings = {
     dueMilesPlaceholder: 'About what mileage? (optional)',
     bandLabel: 'Owners report this around',
     bandYou: 'your car:',
+    clearVehicle: 'Clear vehicle'
   },
   es: {
     tagline: 'Sabe lo que tu carro necesita antes de que se rompa.',
@@ -107,5 +108,6 @@ export const strings = {
     dueMilesPlaceholder: '¿A qué millaje, más o menos? (opcional)',
     bandLabel: 'Los dueños lo reportan alrededor de',
     bandYou: 'tu carro:',
+    clearVehicle: 'Limpiar vehículo'
   }
 }

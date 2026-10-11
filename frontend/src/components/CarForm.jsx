@@ -14,6 +14,19 @@ export default function CarForm({ t, onSubmit, loading }) {
   const [busy, setBusy] = useState('')
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value })
 
+  function clearForm() {
+    setF({
+      vin: '',
+      year: '',
+      make: '',
+      model: '',
+      mileage: '',
+      askingPrice: ''
+    })
+
+    setMode('own')
+  }
+
   async function fillFromVin(vin) {
     if (usingSample || vin.length !== 17) return
     setBusy('vin')
@@ -75,7 +88,24 @@ export default function CarForm({ t, onSubmit, loading }) {
         <label>{t.askingPrice}<input inputMode="numeric" value={f.askingPrice} onChange={set('askingPrice')} /></label>
       )}
 
-      <button className="btn" disabled={loading || busy === 'vin'}>{loading ? t.checking : t.check}</button>
+      <div className='row'>
+        <button
+          type='submit'
+          className='btn'
+          disabled={loading || Boolean(busy)}
+        >
+          {loading ? t.checking : t.check}
+        </button>
+
+        <button
+          type='button'
+          className='btn ghost'
+          onClick={clearForm}
+          disabled={loading || Boolean(busy)}
+        >
+          {t.clearVehicle}
+        </button>
+      </div>
 
       <div className="demo">
         {DEMO.map((d) => <button type="button" key={d.label} className="chip" onClick={() => demo(d)}>{d.label}</button>)}
